@@ -24,7 +24,11 @@ jobs:
                     scons platform=android target=release_debug android_arch=armv7 && \
                     scons platform=android target=release_debug android_arch=arm64v8 && \
                     cd platform/android/java && \
-                    ./gradlew build
+                    ./gradlew build && \
+                    ls ~/work/godot/bin
+            - store_artifacts:
+                name: Store results
+                path: ~/work/godot/bin
     build_android_release:
         docker:
             - image: jonathanschmalhofer/godot-android-template-builder:latest
@@ -49,7 +53,11 @@ jobs:
                     scons platform=android target=release android_arch=armv7 && \
                     scons platform=android target=release android_arch=arm64v8 && \
                     cd platform/android/java && \
-                    ./gradlew build
+                    ./gradlew build && \
+                    ls ~/work/godot/bin
+            - store_artifacts:
+                name: Store results
+                path: ~/work/godot/bin
 workflows:
   version: 2
   build_debug_and_release:
