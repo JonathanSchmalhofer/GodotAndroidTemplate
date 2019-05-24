@@ -25,7 +25,6 @@ jobs:
                     scons platform=android target=release_debug android_arch=arm64v8 && \
                     cd platform/android/java && \
                     ./gradlew build
-jobs:
     build_android_release:
         docker:
             - image: jonathanschmalhofer/godot-android-template-builder:latest
