@@ -1,6 +1,31 @@
 version: 2
 jobs:
-    build:
+    build_android_debug:
+        docker:
+            - image: jonathanschmalhofer/godot-android-template-builder:latest
+        steps:
+            - setup_remote_docker
+            - run:
+                name: Prepare workspace for checkout
+                command: |
+                    mkdir -p ~/work && \
+                    cd ~/work
+            - run:
+                name: Checkout Godot
+                command: |
+                    cd ~/work && \
+                    git clone https://github.com/godotengine/godot.git
+            - run:
+                name: Build Android Template using Scons and Cradle
+                command: |
+                    cd ~/work/godot && \
+                    scons platform=android target=release_debug android_arch=armv7 && \
+                    scons platform=android target=release_debug android_arch=arm64v8 && \
+#                    scons platform=android target=release_debug android_arch=x86 && \
+                    cd platform/android/java && \
+                    ./gradlew build
+jobs:
+    build_android_release:
         docker:
             - image: jonathanschmalhofer/godot-android-template-builder:latest
         steps:
@@ -21,6 +46,18 @@ jobs:
                     cd ~/work/godot && \
                     scons platform=android target=release android_arch=armv7 && \
                     scons platform=android target=release android_arch=arm64v8 && \
-                    scons platform=android target=release android_arch=x86 && \
+#                    scons platform=android target=release_debug android_arch=x86 && \
                     cd platform/android/java && \
                     ./gradlew build
+workflows:
+  version: 2
+  build_debug_and_release:
+    jobs:
+      - build_android_debug:
+          filters:
+            branches:
+              only: master
+      - build_android_release:
+          filters:
+            branches:
+              only: master
