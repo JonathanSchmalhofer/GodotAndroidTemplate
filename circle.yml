@@ -26,7 +26,7 @@ jobs:
                     cd platform/android/java && \
                     ./gradlew build && \
                     cd ~/work/godot/platform/android/java/build/outputs/apk/debug && \
-                    jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-debug-unsigned.apk androiddebugkey && \
+                    jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-debug-unsigned.apk androiddebugkey
             - store_artifacts:
                 name: Store results
                 path: ~/work/godot/platform/android/java/build/outputs/apk/debug
