@@ -27,12 +27,10 @@ jobs:
                     ./gradlew build && \
                     cd ~/work/godot/platform/android/java/build/outputs/apk/debug && \
                     jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-debug-unsigned.apk androiddebugkey && \
-                    cd ~/work/godot/platform/android/java/build/outputs/apk/release && \
-                    jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-release-unsigned.apk androiddebugkey
             - store_artifacts:
                 name: Store results
-                path: ~/work/godot/platform/android/java/build/outputs/apk/
-                destination: target_release_debug
+                path: ~/work/godot/platform/android/java/build/outputs/apk/debug
+                destination: target_debug
     build_android_release:
         docker:
             - image: jonathanschmalhofer/godot-android-template-builder:latest
@@ -62,7 +60,7 @@ jobs:
                     jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-release-unsigned.apk androiddebugkey
             - store_artifacts:
                 name: Store results
-                path: ~/work/godot/platform/android/java/build/outputs/apk/
+                path: ~/work/godot/platform/android/java/build/outputs/apk/release
                 destination: target_release
 workflows:
   version: 2
