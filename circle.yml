@@ -28,7 +28,8 @@ jobs:
                     ls ~/work/godot/bin
             - store_artifacts:
                 name: Store results
-                path: ~/work/godot/bin
+                path: ~/work/godot/platform/android/java/build/outputs/apk/
+                destination: target_release_debug
     build_android_release:
         docker:
             - image: jonathanschmalhofer/godot-android-template-builder:latest
@@ -57,7 +58,8 @@ jobs:
                     ls ~/work/godot/bin
             - store_artifacts:
                 name: Store results
-                path: ~/work/godot/bin
+                path: ~/work/godot/platform/android/java/build/outputs/apk/
+                destination: target_release
 workflows:
   version: 2
   build_debug_and_release:
