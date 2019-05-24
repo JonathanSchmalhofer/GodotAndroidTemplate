@@ -25,7 +25,10 @@ jobs:
                     scons platform=android target=release_debug android_arch=arm64v8 && \
                     cd platform/android/java && \
                     ./gradlew build && \
-                    ls ~/work/godot/bin
+                    cd ~/work/godot/platform/android/java/build/outputs/apk/debug && \
+                    jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-debug-unsigned.apk androiddebugkey && \
+                    cd ~/work/godot/platform/android/java/build/outputs/apk/release && \
+                    jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-release-unsigned.apk androiddebugkey
             - store_artifacts:
                 name: Store results
                 path: ~/work/godot/platform/android/java/build/outputs/apk/
@@ -55,7 +58,8 @@ jobs:
                     scons platform=android target=release android_arch=arm64v8 && \
                     cd platform/android/java && \
                     ./gradlew build && \
-                    ls ~/work/godot/bin
+                    cd ~/work/godot/platform/android/java/build/outputs/apk/release && \
+                    jarsigner -verbose -keystore /debug.keystore -storepass android -keypass android java-release-unsigned.apk androiddebugkey
             - store_artifacts:
                 name: Store results
                 path: ~/work/godot/platform/android/java/build/outputs/apk/
