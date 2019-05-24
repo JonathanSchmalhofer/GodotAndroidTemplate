@@ -11,10 +11,12 @@ jobs:
                     mkdir -p ~/work && \
                     cd ~/work
             - run:
-                name: Checkout Godot
+                name: Checkout Godot & Godot-AdMob-Module from Kloder Games
                 command: |
                     cd ~/work && \
-                    git clone https://github.com/godotengine/godot.git
+                    git clone https://github.com/godotengine/godot.git && \
+                    git clone https://github.com/kloder-games/godot-admob.git && \
+                    mv ~/work/godot-admob/admob ~/work/modules/
             - run:
                 name: Build Android Template using Scons and Cradle
                 command: |
@@ -36,10 +38,12 @@ jobs:
                     mkdir -p ~/work && \
                     cd ~/work
             - run:
-                name: Checkout Godot
+                name: Checkout Godot & Godot-AdMob-Module from Kloder Games
                 command: |
                     cd ~/work && \
-                    git clone https://github.com/godotengine/godot.git
+                    git clone https://github.com/godotengine/godot.git && \
+                    git clone https://github.com/kloder-games/godot-admob.git && \
+                    mv ~/work/godot-admob/admob ~/work/modules/
             - run:
                 name: Build Android Template using Scons and Cradle
                 command: |
