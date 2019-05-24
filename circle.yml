@@ -18,6 +18,7 @@ jobs:
             - run:
                 name: Build Android Template using Scons and Cradle
                 command: |
+                    cd ~/work/godot && \
                     scons platform=android target=release android_arch=armv7 && \
                     scons platform=android target=release android_arch=arm64v8 && \
                     scons platform=android target=release android_arch=x86 && \
