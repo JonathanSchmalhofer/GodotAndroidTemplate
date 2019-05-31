@@ -29,7 +29,7 @@ jobs:
                     ./gradlew build
             - store_artifacts:
                 name: Store results
-                path: ~/work/godot/platform/android/java/build/outputs/apk/debug
+                path: ~/work/godot/bin
                 destination: target_debug
     build_android_release:
         docker:
@@ -60,7 +60,7 @@ jobs:
                     ./gradlew build
             - store_artifacts:
                 name: Store results
-                path: ~/work/godot/platform/android/java/build/outputs/apk/release
+                path: ~/work/godot/bin
                 destination: target_release
 workflows:
   version: 2
