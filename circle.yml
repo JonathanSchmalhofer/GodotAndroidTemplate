@@ -16,7 +16,7 @@ jobs:
                     cd ~/work && \
                     git clone https://github.com/godotengine/godot.git && \
                     git clone https://github.com/kloder-games/godot-admob.git && \
-                    mv ~/work/godot-admob/admob ~/work/modules/ && \
+                    mv ~/work/godot-admob/admob ~/work/godot/modules/ && \
                     cd ~/work/godot && \
                     git checkout 3.1.1-stable
             - run:
@@ -47,7 +47,7 @@ jobs:
                     cd ~/work && \
                     git clone https://github.com/godotengine/godot.git && \
                     git clone https://github.com/kloder-games/godot-admob.git && \
-                    mv ~/work/godot-admob/admob ~/work/modules/ && \
+                    mv ~/work/godot-admob/admob ~/work/godot/modules/ && \
                     cd ~/work/godot && \
                     git checkout 3.1.1-stable
             - run:
